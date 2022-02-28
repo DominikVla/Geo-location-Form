@@ -12,10 +12,25 @@
 		<input type="text" name="Disaster" placeholder="Type of Disaster"><br>
 		<h3> Location: </h3>
 		<!-- Longitude, Latitude !-->
+		
 		<p id="demo"></p>
 		<input type="text" id="lat" name="Lat" required>
-		<input type="text" id="long" name="Long" required>
-		<input type="submit">
+		<input type="text" id="long" name="Long" required><br><br>
+
+		<!-- Urgency !-->
+		<h3> Urgency </h3>
+	  	<input type="radio" id="Low" name="urgency" value="Low"
+	         checked>
+	  	<label for="Low">Low</label>
+
+	  	<input type="radio" id="medium" name="urgency" value="Medium">
+	  	<label for="Medium">Medium</label>
+
+	  	<input type="radio" id="high" name="urgency" value="High">
+	  	<label for="High">High</label><br><br>
+
+
+		<input type="submit" value="Submit">
 	</form>
 
 	<script>
