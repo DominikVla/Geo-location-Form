@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<h1> Form </h1>
+	<button onclick="getLocation()">Try It</button>
+	<form name = "MainForm" action="form.php" method="POST">
+		<!-- Name, Resources, Disaster !-->
+		<input type="text" name="Name" placeholder="Name"><br>
+		<input type="text" name="Resources" placeholder="Resources needed"><br>
+		<input type="text" name="Disaster" placeholder="Type of Disaster"><br>
+		<h3> Location: </h3>
+		<!-- Longitude, Latitude !-->
+		<p id="demo"></p>
+		<input type="text" id="lat" name="Lat" required>
+		<input type="text" id="long" name="Long" required>
+		<input type="submit">
+	</form>
+
+	<script>
+	// A paragraph tag for errors
+	var x = document.getElementById("demo");
+
+	// Function to get location and test if the browser supports Geolocation
+	function getLocation() {
+	  if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(showPosition, showError);
+	  } else { 
+	    x.innerHTML = "Geolocation is not supported by this browser.";
+	  }
+	}
+
+	// Function to set the text boxes to the current GeoLocation
+	function showPosition(position) {
+		// Text boxes with IDs of lat and long being given their values
+	 	document.getElementById("lat").value = position.coords.latitude;
+	 	document.getElementById("long").value = position.coords.longitude;
+	}
+	// Error Handling
+	function showError(error) {
+	  switch(error.code) {
+	    case error.PERMISSION_DENIED:
+	      x.innerHTML = "User denied the request for Geolocation. Please manually insert your GeoLocation."
+	      break;
+	    case error.POSITION_UNAVAILABLE:
+	      x.innerHTML = "Location information is unavailable. Please manually insert your GeoLocation."
+	      break;
+	    case error.TIMEOUT:
+	      x.innerHTML = "The request to get user location timed out. Please manually insert your GeoLocation."
+	      break;
+	    case error.UNKNOWN_ERROR:
+	      x.innerHTML = "An unknown error occurred. Please manually insert your GeoLocation."
+	      break;
+	  }
+	} 
+	</script>
+</body>
+</html>
